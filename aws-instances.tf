@@ -55,7 +55,7 @@ resource "aws_subnet" "us-east-1d" {
 }
 
 resource "aws_launch_template" "web" {
-  name = "web-template"
+  name = "ggillen-web-template"
   disable_api_termination = true
   image_id = "${data.aws_ami.ubuntu.id}"
   instance_initiated_shutdown_behavior = "terminate"
@@ -64,7 +64,7 @@ resource "aws_launch_template" "web" {
 }
 
 resource "aws_placement_group" "web" {
-  name     = "web"
+  name     = "ggillen-web"
   strategy = "spread"
 }
 
@@ -72,6 +72,7 @@ resource "aws_s3_account_public_access_block" "global_block" {
   block_public_acls   = true
   block_public_policy = true
 }
+
 resource "aws_s3_bucket" "bucket-1" {
   bucket = "cost-estimation-bucket-1"
   acl    = "private"
