@@ -5,7 +5,7 @@ variable "instance_type" {
 
 variable "vpc_id" {
   type    = "string"
-  default = "vpc-01e40d78"
+  default = "vpc-ee374694"
 }
 
 variable "default-security-group" {
@@ -41,6 +41,10 @@ resource "aws_subnet" "us-east-1c" {
   vpc_id      = var.vpc_id
   cidr_block  = "172.31.0.0/20"
 }
+resource "aws_subnet" "us-east-1d" {
+  vpc_id      = var.vpc_id
+  cidr_block  = "172.31.80.0/20"
+}
 resource "aws_subnet" "us-east-1e" {
   vpc_id      = var.vpc_id
   cidr_block  = "172.31.64.0/20"
@@ -48,10 +52,6 @@ resource "aws_subnet" "us-east-1e" {
 resource "aws_subnet" "us-east-1f" {
   vpc_id      = var.vpc_id
   cidr_block  = "172.31.48.0/20"
-}
-resource "aws_subnet" "us-east-1d" {
-  vpc_id      = var.vpc_id
-  cidr_block  = "172.31.80.0/20"
 }
 
 resource "aws_launch_template" "web" {
