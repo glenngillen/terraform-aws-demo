@@ -3,11 +3,6 @@ variable "instance_type" {
   default = "t3.micro"
 }
 
-variable "vpc_id" {
-  type    = string
-  default = "vpc-52d3a128"
-}
-
 variable "default-security-group" {
   type    = string
   default = "sg-0ace9656"
@@ -29,28 +24,32 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+resource "aws_vpc" "main" {
+  cidr_block = "172.31.0.0/16"
+}
+
 resource "aws_subnet" "us-east-1a" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.16.0/20"
 }
 resource "aws_subnet" "us-east-1b" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.32.0/20"
 }
 resource "aws_subnet" "us-east-1c" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.0.0/20"
 }
 resource "aws_subnet" "us-east-1d" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.80.0/20"
 }
 resource "aws_subnet" "us-east-1e" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.64.0/20"
 }
 resource "aws_subnet" "us-east-1f" {
-  vpc_id      = var.vpc_id
+  vpc_id      = aws_vpc.main.id
   cidr_block  = "172.31.48.0/20"
 }
 
