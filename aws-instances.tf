@@ -5,12 +5,12 @@ variable "instance_type" {
 
 variable "vpc_id" {
   type    = string
-  default = "vpc-ee374694"
+  default = "vpc-52d3a128"
 }
 
 variable "default-security-group" {
   type    = string
-  default = "sg-6b30d337"
+  default = "sg-0ace9656"
 }
 
 data "aws_ami" "ubuntu" {
