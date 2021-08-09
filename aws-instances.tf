@@ -1,15 +1,15 @@
 variable "instance_type" {
-  type    = "string"
+  type    = string
   default = "t3.micro"
 }
 
 variable "vpc_id" {
-  type    = "string"
+  type    = string
   default = "vpc-ee374694"
 }
 
 variable "default-security-group" {
-  type    = "string"
+  type    = string
   default = "sg-6b30d337"
 }
 
@@ -57,7 +57,7 @@ resource "aws_subnet" "us-east-1f" {
 resource "aws_launch_template" "web" {
   name = "ggillen-web-template"
   disable_api_termination = true
-  image_id = "${data.aws_ami.ubuntu.id}"
+  image_id = data.aws_ami.ubuntu.id
   instance_initiated_shutdown_behavior = "terminate"
   instance_type = var.instance_type
   vpc_security_group_ids = [var.default-security-group]
